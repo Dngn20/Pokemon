@@ -56,6 +56,11 @@ public class PokemonPanel extends JPanel
 	private void setupPanel()
 	{
 		this.setLayout(baseLayout);
+		this.setBackground(Color.BLACK);
+		this.add(healthLabel);
+		this.add(combatLabel);
+		this.add(numberLabel);
+		
 	}
 	
 	private void setupLayout()
