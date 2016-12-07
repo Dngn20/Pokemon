@@ -25,6 +25,25 @@ public abstract class Pokemon
 			
 			pokeTypes[index] = temp;
 		}
+		for(String current : pokeTypes)
+		{
+			String temp = current.replace(this.getClass().getPackage().getName() + ".", "");
+			pokemonTypes += temp = "\n";
+		}
 		
+		return pokemonTypes;
 	}
+
+	public String toString()
+	{
+		return name;
+	}
+	
+	public String getPOkemonInformation()
+	{
+		String pokemonInfo = "This pokemon is of type: " + this.getClass().getSimpleName();
+		
+		return pokemonInfo;
+	}
+
 }
