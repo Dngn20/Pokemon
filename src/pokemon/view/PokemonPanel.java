@@ -46,16 +46,10 @@ public class PokemonPanel extends JPanel
 		this.speedLabel = new JLabel("Speed Points");
 		this.numberLabel = new JLabel("PokemonNumber");
 		this.nameLabel = new JLabel("Name");
-		this.pokedexSelector = new JComboBox(new String [] {"Sceptile, Scizor, Snorlax , Golurk, Flygon"});
-		baseLayout.putConstraint(SpringLayout.WEST, pokedexSelector, 91, SpringLayout.WEST, this);
-		baseLayout.putConstraint(SpringLayout.SOUTH, pokedexSelector, 901, SpringLayout.SOUTH, this);
-		
+		this.pokedexSelector = new JComboBox(new String [] {"Scyther", "Treeko", "Munchlax", "Golette", "Trapinch"});
 		this.pokemonLabel = new JLabel("The current pokemon" , pokemonIcon, JLabel.CENTER);
-		baseLayout.putConstraint(SpringLayout.NORTH, pokemonLabel, 0, SpringLayout.NORTH, numberLabel);
-		baseLayout.putConstraint(SpringLayout.EAST, pokemonLabel, 20, SpringLayout.EAST, pokedexSelector);
-		baseLayout.putConstraint(SpringLayout.SOUTH, pokemonLabel, 32, SpringLayout.SOUTH, updateButton);
-		baseLayout.putConstraint(SpringLayout.WEST, pokemonLabel, 23, SpringLayout.WEST, this);
-	
+		
+		
 		setupPanel();
 		setupLayout();
 		setupListeners();
@@ -97,7 +91,6 @@ public class PokemonPanel extends JPanel
 		baseLayout.putConstraint(SpringLayout.WEST, numberField, 587, SpringLayout.WEST, this);
 		baseLayout.putConstraint(SpringLayout.SOUTH, numberField, -11, SpringLayout.NORTH, healthField);
 		baseLayout.putConstraint(SpringLayout.EAST, numberField, -70, SpringLayout.EAST, this);
-		baseLayout.putConstraint(SpringLayout.NORTH, updateButton, 14, SpringLayout.SOUTH, advancedArea);
 		baseLayout.putConstraint(SpringLayout.EAST, advancedArea, -101, SpringLayout.EAST, this);
 		baseLayout.putConstraint(SpringLayout.WEST, advancedArea, 494, SpringLayout.WEST, this);
 		baseLayout.putConstraint(SpringLayout.SOUTH, advancedArea, -187, SpringLayout.SOUTH, this);
@@ -120,8 +113,13 @@ public class PokemonPanel extends JPanel
 		baseLayout.putConstraint(SpringLayout.NORTH, nameField, -6, SpringLayout.NORTH, nameLabel);
 		baseLayout.putConstraint(SpringLayout.NORTH, nameLabel, 21, SpringLayout.NORTH, this);
 		baseLayout.putConstraint(SpringLayout.EAST, nameLabel, -396, SpringLayout.EAST, this);
-		baseLayout.putConstraint(SpringLayout.WEST, updateButton, 132, SpringLayout.EAST, pokedexSelector);
-	
+		baseLayout.putConstraint(SpringLayout.EAST, updateButton, -128, SpringLayout.EAST, this);
+		baseLayout.putConstraint(SpringLayout.NORTH, updateButton, 6, SpringLayout.SOUTH, advancedArea);
+		baseLayout.putConstraint(SpringLayout.WEST, pokedexSelector, 155, SpringLayout.WEST, this);
+		baseLayout.putConstraint(SpringLayout.NORTH, pokedexSelector, 85, SpringLayout.SOUTH, pokemonLabel);
+		baseLayout.putConstraint(SpringLayout.NORTH, pokemonLabel, 35, SpringLayout.NORTH, this);
+		baseLayout.putConstraint(SpringLayout.WEST, pokemonLabel, 0, SpringLayout.WEST, this);
+		baseLayout.putConstraint(SpringLayout.EAST, pokemonLabel, -45, SpringLayout.WEST, combatLabel);
 	}
 	
 	private void setupListeners()
