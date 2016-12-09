@@ -6,6 +6,7 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.*;
 
 public class PokemonPanel extends JPanel
 {
@@ -124,8 +125,65 @@ public class PokemonPanel extends JPanel
 	
 	private void setupListeners()
 	{
+//		pokedexSelector.addActionListener(new ActionListener()
+//		{
+			
+//		});
 		
+	
+	
+		this.addMouseListener(new MouseListener()
+
+		{
+			public void mouseEntered(MouseEvent entered)
+			{
+//			JOptionPane.showMessageDialog(baseController.getBaseFrame(), "The mouse entered the program");
+			}
+				
+			public void mouseReleased(MouseEvent released)
+			{
+//				JOptionPane.showMessageDialog(baseController.getBaseFrame(), "The mouse was released");
+
+			}
+			public void mouseExited(MouseEvent exited)
+			{
+//				JOptionPane.showMessageDialog(baseController.getBaseFrame(), "The mouse entered the exited");
+			}
+			
+			public void mouseClicked(MouseEvent clicked)
+			{
+//				JOptionPane.showMessageDialog(baseController.getBaseFrame(), "The mouse entered the clicked");
+			}
+		
+			public void mousePressed(MouseEvent pressed)
+			{
+//				JOptionPane.showMessageDialog(baseController.getBaseFrame(), "The mouse entered the pressed");
+			}
+		});
+		this.addMouseMotionListener(new MouseMotionListener()
+			{
+				public void mouseDragged(MouseEvent dragged)
+				{
+					setRandomColor();
+				}
+				
+				public void mouseMoved(MouseEvent moved)
+				{
+					if((Math.abs(moved.getX() - updateButton.getX()) < 5 ) || (Math.abs(moved.getY() - updateButton.getY()) < 5))
+					{
+						updateButton.setLocation(moved.getX() + 10, moved.getY() - 10);
+					}
+				}
+				
+			});
 	}
 
-	
+	private void setRandomColor()
+	{
+		int red = (int) (Math.random() * 256);
+		int green = (int) (Math.random() * 256);
+		int blue = (int) (Math.random() * 256);
+		
+		this.setBackground(new Color(red, green,blue));
+	}
 }
