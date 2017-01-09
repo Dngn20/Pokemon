@@ -53,7 +53,7 @@ public class PokemonPanel extends JPanel
 		
 		setupPanel();
 		setupLayout();
-		setupListeners();
+//		setupListeners();
 	}
 	
 	private void setupPanel()
@@ -123,8 +123,34 @@ public class PokemonPanel extends JPanel
 		baseLayout.putConstraint(SpringLayout.EAST, pokemonLabel, -45, SpringLayout.WEST, combatLabel);
 	}
 	
-	private void setupListeners()
+	private void changeColorBasedOnData(String data)
 	{
+		if(data.contains("Normal"))
+		{
+			this.setBackground(Color.YELLOW);
+		}
+		else if (data.contains("Ground"))
+		{
+			this.setBackground(Color.CYAN);
+		}
+		
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+		repaint();
+	}
+	
+	
+	
+//	private void setupListeners()
+//	{
 //		pokedexSelector.addActionListener(new ActionListener()
 //		{
 			
@@ -132,58 +158,58 @@ public class PokemonPanel extends JPanel
 		
 	
 	
-		this.addMouseListener(new MouseListener()
-
-		{
-			public void mouseEntered(MouseEvent entered)
-			{
+//		this.addMouseListener(new MouseListener()
+//
+//		{
+//			public void mouseEntered(MouseEvent entered)
+//			{
 //			JOptionPane.showMessageDialog(baseController.getBaseFrame(), "The mouse entered the program");
-			}
-				
-			public void mouseReleased(MouseEvent released)
-			{
+//			}
+//				
+//			public void mouseReleased(MouseEvent released)
+//			{
 //				JOptionPane.showMessageDialog(baseController.getBaseFrame(), "The mouse was released");
-
-			}
-			public void mouseExited(MouseEvent exited)
-			{
+//
+//			}
+//			public void mouseExited(MouseEvent exited)
+//			{
 //				JOptionPane.showMessageDialog(baseController.getBaseFrame(), "The mouse entered the exited");
-			}
-			
-			public void mouseClicked(MouseEvent clicked)
-			{
+//			}
+//			
+//			public void mouseClicked(MouseEvent clicked)
+//			{
 //				JOptionPane.showMessageDialog(baseController.getBaseFrame(), "The mouse entered the clicked");
-			}
-		
-			public void mousePressed(MouseEvent pressed)
-			{
+//			}
+//		
+//			public void mousePressed(MouseEvent pressed)
+//			{
 //				JOptionPane.showMessageDialog(baseController.getBaseFrame(), "The mouse entered the pressed");
-			}
-		});
-		this.addMouseMotionListener(new MouseMotionListener()
-			{
-				public void mouseDragged(MouseEvent dragged)
-				{
-					setRandomColor();
-				}
-				
-				public void mouseMoved(MouseEvent moved)
-				{
-					if((Math.abs(moved.getX() - updateButton.getX()) < 5 ) || (Math.abs(moved.getY() - updateButton.getY()) < 5))
-					{
-						updateButton.setLocation(moved.getX() + 10, moved.getY() - 10);
-					}
-				}
-				
-			});
-	}
-
-	private void setRandomColor()
-	{
-		int red = (int) (Math.random() * 256);
-		int green = (int) (Math.random() * 256);
-		int blue = (int) (Math.random() * 256);
-		
-		this.setBackground(new Color(red, green,blue));
-	}
+//			}
+//		});
+//		this.addMouseMotionListener(new MouseMotionListener()
+//		{
+//				public void mouseDragged(MouseEvent dragged)
+//				{
+//					setRandomColor();
+//				}
+//				
+//				public void mouseMoved(MouseEvent moved)
+//				{
+//					if((Math.abs(moved.getX() - updateButton.getX()) < 5 ) || (Math.abs(moved.getY() - updateButton.getY()) < 5))
+//					{
+//						updateButton.setLocation(moved.getX() + 10, moved.getY() - 10);
+//					}
+//				}
+//				
+//			});
+//	}
+//
+//	private void setRandomColor()
+//	{
+//		int red = (int) (Math.random() * 256);
+//		int green = (int) (Math.random() * 256);
+//		int blue = (int) (Math.random() * 256);
+//		
+//		this.setBackground(new Color(red, green,blue));
+//	}
 }

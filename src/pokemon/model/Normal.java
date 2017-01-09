@@ -1,5 +1,7 @@
 package pokemon.model;
 
-public class Normal {
-
+public interface Normal 
+{
+	public int MegaPunch();
+	public int MegaKick();
 }
