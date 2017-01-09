@@ -1,7 +1,9 @@
-package pokemon.view;
+package poke.view;
 
 import javax.swing.*;
-import pokemon.controller.PokemonController;
+
+import poke.controller.PokemonController;
+
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
@@ -61,6 +63,15 @@ public class PokemonPanel extends JPanel
 		this.setLayout(baseLayout);
 		this.setBackground(Color.GREEN);
 		this.setPreferredSize(new Dimension(900, 600));
+		
+		numberField.setEditable(false);
+		advancedArea.setEditable(false);
+		advancedArea.setWrapStyleWord(true);
+		advancedArea.setLineWrap(false);
+		
+		pokemonLabel.setVerticalTextPosition(JLabel.BOTTOM);
+		pokemonLabel.setHorizontalTextPosition(JLabel.CENTER);
+		
 		this.add(healthLabel);
 		this.add(combatLabel);
 		this.add(numberLabel);

@@ -1,9 +1,9 @@
-package pokemon.controller;
+package poke.controller;
 
-import pokemon.model.Pokemon;
-import pokemon.view.PokemonFrame;
 import java.util.ArrayList;
-import pokemon.model.*;
+
+import poke.model.*;
+import poke.view.PokemonFrame;
 
 
 public class PokemonController 
