@@ -1,14 +1,30 @@
 package pokemon.model;
 
-public class Pachirsu extends Pokemon //implements Grass
+public class Pachirsu extends Pokemon implements Electric
 {
 	public Pachirsu()
 	{
-		super("Treeko", 252);
+		super("Pachirsu", 417);
+		setSpeed(6);
+		setAttackPoints(4);
+		setHealthPoints(3);
 	}
 
 	public Pachirsu(String name)
 	{
-		super(name, 252);
+		super(name, 417);
+		setSpeed(6);
+		setAttackPoints(4);
+		setHealthPoints(3);
+	}
+	
+	public int Thunderbolt()
+	{
+		return 4;
+	}
+
+	public int Thunder()
+	{
+		return 6;
 	}
 }
