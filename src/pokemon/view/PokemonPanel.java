@@ -47,7 +47,7 @@ public class PokemonPanel extends JPanel
 		this.speedLabel = new JLabel("Speed Points");
 		this.numberLabel = new JLabel("PokemonNumber");
 		this.nameLabel = new JLabel("Name");
-		this.pokedexSelector = new JComboBox(new String [] {"Scyther", "Treeko", "Munchlax", "Golette", "Trapinch"});
+		this.pokedexSelector = new JComboBox(new String [] {"Plusle", "Minun", "Lapris", "Kangaskhan", "Pachirsu"});
 		this.pokemonLabel = new JLabel("The current pokemon" , pokemonIcon, JLabel.CENTER);
 		
 		
@@ -127,23 +127,21 @@ public class PokemonPanel extends JPanel
 	{
 		if(data.contains("Normal"))
 		{
+			this.setBackground(Color.ORANGE);
+		}
+		else if (data.contains("Water"))
+		{
+			this.setBackground(Color.BLUE);
+		}
+		else if (data.contains("Ice"))
+		{
+			this.setBackground(Color.WHITE);
+		}
+		else if (data.contains("Electric"))
+		{
 			this.setBackground(Color.YELLOW);
 		}
-		else if (data.contains("Ground"))
-		{
-			this.setBackground(Color.CYAN);
-		}
 		
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 		repaint();
 	}
 	
