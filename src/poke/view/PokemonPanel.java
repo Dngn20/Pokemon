@@ -71,7 +71,11 @@ public class PokemonPanel extends JPanel
 		
 		pokemonLabel.setVerticalTextPosition(JLabel.BOTTOM);
 		pokemonLabel.setHorizontalTextPosition(JLabel.CENTER);
+<<<<<<< HEAD:src/poke/view/PokemonPanel.java
 
+=======
+		
+>>>>>>> origin/master:src/poke/view/PokemonPanel.java
 		this.add(healthLabel);
 		this.add(combatLabel);
 		this.add(numberLabel);
