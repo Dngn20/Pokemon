@@ -1,7 +1,9 @@
-package pokemon.view;
+package poke.view;
 
 import javax.swing.*;
-import pokemon.controller.PokemonController;
+
+import poke.controller.PokemonController;
+
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
@@ -47,13 +49,13 @@ public class PokemonPanel extends JPanel
 		this.speedLabel = new JLabel("Speed Points");
 		this.numberLabel = new JLabel("PokemonNumber");
 		this.nameLabel = new JLabel("Name");
-		this.pokedexSelector = new JComboBox(new String [] {"Scyther", "Treeko", "Munchlax", "Golette", "Trapinch"});
+		this.pokedexSelector = new JComboBox(new String [] {"Plusle", "Minun", "Lapris", "Kangaskhan", "Pachirsu"});
 		this.pokemonLabel = new JLabel("The current pokemon" , pokemonIcon, JLabel.CENTER);
 		
 		
 		setupPanel();
 		setupLayout();
-		setupListeners();
+//		setupListeners();
 	}
 	
 	private void setupPanel()
@@ -61,6 +63,19 @@ public class PokemonPanel extends JPanel
 		this.setLayout(baseLayout);
 		this.setBackground(Color.GREEN);
 		this.setPreferredSize(new Dimension(900, 600));
+		
+		numberField.setEditable(false);
+		advancedArea.setEditable(false);
+		advancedArea.setWrapStyleWord(true);
+		advancedArea.setLineWrap(false);
+		
+		pokemonLabel.setVerticalTextPosition(JLabel.BOTTOM);
+		pokemonLabel.setHorizontalTextPosition(JLabel.CENTER);
+<<<<<<< HEAD:src/poke/view/PokemonPanel.java
+
+=======
+		
+>>>>>>> origin/master:src/poke/view/PokemonPanel.java
 		this.add(healthLabel);
 		this.add(combatLabel);
 		this.add(numberLabel);
@@ -123,8 +138,58 @@ public class PokemonPanel extends JPanel
 		baseLayout.putConstraint(SpringLayout.EAST, pokemonLabel, -45, SpringLayout.WEST, combatLabel);
 	}
 	
-	private void setupListeners()
+	private void changeColorBasedOnData(String data)
 	{
+		if(data.contains("Normal"))
+		{
+			this.setBackground(Color.ORANGE);
+		}
+		else if (data.contains("Water"))
+		{
+			this.setBackground(Color.BLUE);
+		}
+		else if (data.contains("Ice"))
+		{
+			this.setBackground(Color.WHITE);
+		}
+		else if (data.contains("Electric"))
+		{
+			this.setBackground(Color.YELLOW);
+		}
+		
+		repaint();
+	
+		updateButton.addActionListener(new ActionListener()
+		{
+			public void actionPerformed(ActionEvent click)
+			{
+				String name = nameField.getText();
+				int attack = Integer.parseInt(combatField.getText());
+				int health = Integer.parseInt(healthField.getText());
+				double speed =  Double.parseDouble(speedField.getText());
+				baseController.updateSelected(pokedexSelector.getSelectedIndex(), name, attack, health, speed);
+				pokemonIcon = new ImageIcon(getClass().getResource("images/" + baseController.getPokedex().get(pokedexSelector.getSelectedIndex()).getClass().getSimpleName() + ".png"));
+			}
+		});
+	pokedexSelector.addActionListener(new ActionListener()
+	{
+		public void actionPerformed(ActionEvent e)
+		{
+			healthField.setText(Integer.toString(baseController.getPokedex().get(pokedexSelector.getSelectedIndex()).getHealthPoints()));
+			numberField.setText(Integer.toString(baseController.getPokedex().get(pokedexSelector.getSelectedIndex()).getNumber()));
+			speedField.setText(Double.toString(baseController.getPokedex().get(pokedexSelector.getSelectedIndex()).getSpeed()));
+			combatField.setText(Integer.toString(baseController.getPokedex().get(pokedexSelector.getSelectedIndex()).getAttackPoints()));
+			nameField.setText(baseController.getPokedex().get(pokedexSelector.getSelectedIndex()).getName());
+			
+			ImageIcon tempIcon = new ImageIcon(getClass().getResource("images/" + baseController.getPokedex().get(pokedexSelector.getSelectedIndex()).getClass().getSimpleName() + ".png"));
+			
+			pokemonIcon = tempIcon;
+			
+		}
+	});
+}
+//	private void setupListeners()
+//	{
 //		pokedexSelector.addActionListener(new ActionListener()
 //		{
 			
@@ -132,58 +197,59 @@ public class PokemonPanel extends JPanel
 		
 	
 	
-		this.addMouseListener(new MouseListener()
-
-		{
-			public void mouseEntered(MouseEvent entered)
-			{
+//		this.addMouseListener(new MouseListener()
+//
+//		{
+//			public void mouseEntered(MouseEvent entered)
+//			{
 //			JOptionPane.showMessageDialog(baseController.getBaseFrame(), "The mouse entered the program");
-			}
-				
-			public void mouseReleased(MouseEvent released)
-			{
+//			}
+//				
+//			public void mouseReleased(MouseEvent released)
+//			{
 //				JOptionPane.showMessageDialog(baseController.getBaseFrame(), "The mouse was released");
-
-			}
-			public void mouseExited(MouseEvent exited)
-			{
+//
+//			}
+//			public void mouseExited(MouseEvent exited)
+//			{
 //				JOptionPane.showMessageDialog(baseController.getBaseFrame(), "The mouse entered the exited");
-			}
-			
-			public void mouseClicked(MouseEvent clicked)
-			{
+//			}
+//			
+//			public void mouseClicked(MouseEvent clicked)
+//			{
 //				JOptionPane.showMessageDialog(baseController.getBaseFrame(), "The mouse entered the clicked");
-			}
-		
-			public void mousePressed(MouseEvent pressed)
-			{
+//			}
+//		
+//			public void mousePressed(MouseEvent pressed)
+//			{
 //				JOptionPane.showMessageDialog(baseController.getBaseFrame(), "The mouse entered the pressed");
-			}
-		});
-		this.addMouseMotionListener(new MouseMotionListener()
-			{
-				public void mouseDragged(MouseEvent dragged)
-				{
-					setRandomColor();
-				}
-				
-				public void mouseMoved(MouseEvent moved)
-				{
-					if((Math.abs(moved.getX() - updateButton.getX()) < 5 ) || (Math.abs(moved.getY() - updateButton.getY()) < 5))
-					{
-						updateButton.setLocation(moved.getX() + 10, moved.getY() - 10);
-					}
-				}
-				
-			});
-	}
-
-	private void setRandomColor()
-	{
-		int red = (int) (Math.random() * 256);
-		int green = (int) (Math.random() * 256);
-		int blue = (int) (Math.random() * 256);
-		
-		this.setBackground(new Color(red, green,blue));
-	}
+//			}
+//		});
+//		this.addMouseMotionListener(new MouseMotionListener()
+//		{
+//				public void mouseDragged(MouseEvent dragged)
+//				{
+//					setRandomColor();
+//				}
+//				
+//				public void mouseMoved(MouseEvent moved)
+//				{
+//					if((Math.abs(moved.getX() - updateButton.getX()) < 5 ) || (Math.abs(moved.getY() - updateButton.getY()) < 5))
+//					{
+//						updateButton.setLocation(moved.getX() + 10, moved.getY() - 10);
+//					}
+//				}
+//				
+//			});
+//	}
+//
+//	private void setRandomColor()
+//	{
+//		int red = (int) (Math.random() * 256);
+//		int green = (int) (Math.random() * 256);
+//		int blue = (int) (Math.random() * 256);
+//		
+//		this.setBackground(new Color(red, green,blue));
+//	}
+	
 }
