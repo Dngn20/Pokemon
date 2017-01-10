@@ -1,7 +1,9 @@
-package pokemon.view;
+package poke.view;
 
 import javax.swing.*;
-import pokemon.controller.PokemonController;
+
+import poke.controller.PokemonController;
+
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
@@ -61,6 +63,15 @@ public class PokemonPanel extends JPanel
 		this.setLayout(baseLayout);
 		this.setBackground(Color.GREEN);
 		this.setPreferredSize(new Dimension(900, 600));
+		
+		numberField.setEditable(false);
+		advancedArea.setEditable(false);
+		advancedArea.setWrapStyleWord(true);
+		advancedArea.setLineWrap(false);
+		
+		pokemonLabel.setVerticalTextPosition(JLabel.BOTTOM);
+		pokemonLabel.setHorizontalTextPosition(JLabel.CENTER);
+
 		this.add(healthLabel);
 		this.add(combatLabel);
 		this.add(numberLabel);
@@ -143,10 +154,36 @@ public class PokemonPanel extends JPanel
 		}
 		
 		repaint();
-	}
 	
-	
-	
+		updateButton.addActionListener(new ActionListener()
+		{
+			public void actionPerformed(ActionEvent click)
+			{
+				String name = nameField.getText();
+				int attack = Integer.parseInt(combatField.getText());
+				int health = Integer.parseInt(healthField.getText());
+				double speed =  Double.parseDouble(speedField.getText());
+				baseController.updateSelected(pokedexSelector.getSelectedIndex(), name, attack, health, speed);
+				pokemonIcon = new ImageIcon(getClass().getResource("images/" + baseController.getPokedex().get(pokedexSelector.getSelectedIndex()).getClass().getSimpleName() + ".png"));
+			}
+		});
+	pokedexSelector.addActionListener(new ActionListener()
+	{
+		public void actionPerformed(ActionEvent e)
+		{
+			healthField.setText(Integer.toString(baseController.getPokedex().get(pokedexSelector.getSelectedIndex()).getHealthPoints()));
+			numberField.setText(Integer.toString(baseController.getPokedex().get(pokedexSelector.getSelectedIndex()).getNumber()));
+			speedField.setText(Double.toString(baseController.getPokedex().get(pokedexSelector.getSelectedIndex()).getSpeed()));
+			combatField.setText(Integer.toString(baseController.getPokedex().get(pokedexSelector.getSelectedIndex()).getAttackPoints()));
+			nameField.setText(baseController.getPokedex().get(pokedexSelector.getSelectedIndex()).getName());
+			
+			ImageIcon tempIcon = new ImageIcon(getClass().getResource("images/" + baseController.getPokedex().get(pokedexSelector.getSelectedIndex()).getClass().getSimpleName() + ".png"));
+			
+			pokemonIcon = tempIcon;
+			
+		}
+	});
+}
 //	private void setupListeners()
 //	{
 //		pokedexSelector.addActionListener(new ActionListener()
@@ -210,4 +247,5 @@ public class PokemonPanel extends JPanel
 //		
 //		this.setBackground(new Color(red, green,blue));
 //	}
+	
 }
