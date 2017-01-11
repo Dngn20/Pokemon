@@ -170,7 +170,7 @@ public class PokemonPanel extends JPanel
 				pokemonIcon = new ImageIcon(getClass().getResource("images/" + baseController.getPokedex().get(pokedexSelector.getSelectedIndex()).getClass().getSimpleName() + ".png"));
 		
 			}
-});
+		});
 		pokedexSelector.addActionListener(new ActionListener()
 		{
 			public void actionPerformed(ActionEvent e)
@@ -252,6 +252,6 @@ public class PokemonPanel extends JPanel
 //		this.setBackground(new Color(red, green,blue));
 //	}
 		
-}
 	
+	}
 }
