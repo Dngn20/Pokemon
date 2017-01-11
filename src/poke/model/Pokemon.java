@@ -13,7 +13,14 @@ public abstract class Pokemon
 		this.name = name;
 		this.number = number;
 	}
-
+	public Pokemon()
+	{
+		
+	}
+	public Pokemon(String name)
+	{
+		
+	}
 	public String getPokemonTypes()
 	{
 		String pokemonTypes = "This pokemon has the follwing types:\n";
